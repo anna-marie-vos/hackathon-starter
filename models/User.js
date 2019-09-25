@@ -28,7 +28,8 @@ const userSchema = new mongoose.Schema({
     website: String,
     picture: String
   },
-  private: { type: Boolean, default: false }
+  private: { type: Boolean, default: false },
+  coach: { type: Boolean, default: false }
 
 }, { timestamps: true });
 

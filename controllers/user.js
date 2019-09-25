@@ -150,6 +150,7 @@ exports.postUpdateProfile = (req, res, next) => {
     user.profile.location = req.body.location || '';
     user.profile.website = req.body.website || '';
     user.private = req.body.private === 'true' || false;
+    user.coach = req.body.coach === 'true' || false;
 
     user.save((err) => {
       if (err) {

@@ -1,0 +1,15 @@
+.card.mr-1(style="width: 18rem;")
+    .card-body
+        h5.card-title New Course 
+        p.flex-grow-1.card-text Click the link below to create your own course, 
+            | which learners will be able to sign up for. 
+        a.btn.btn-block.btn-outline-primary(href="courses/create") Create New
+each course in coachCourses
+    .card.mr-1(style="width: 18rem;")
+        .card-body.d-flex.flex-column
+            h5.card-title #{course.title}
+            p.flex-grow-1.card-text #{course.description}
+            a.btn.btn-block.btn-outline-primary(href=`courses/create/${course._id}`) View
+
+
+

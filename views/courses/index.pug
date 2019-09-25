@@ -1,0 +1,50 @@
+extends ../layout
+
+block content
+    .row
+        h3 My Courses
+
+    .accordion(
+        id="courses"
+    )
+    if  !user.coach || learnCourses.length > 0
+        .card
+            .card-header(id="learn")
+                h2.mb-0
+                button.btn.btn-block.btn-outline-secondary(
+                    type="button"
+                    data-toggle="collapse" 
+                    data-target="#learnContent"
+                    aria-expanded="false" 
+                    aria-controls="learnContent"
+                    title=`View or create your own courses`
+                    ) Learn, view or complete courses you've signed up for
+            div.collapse.show(
+                id="learnContent" 
+                aria-labelledby="learn" 
+                data-parent="#courses"
+            )
+                 .card-body.d-flex(
+                    style="flex-wrap: wrap;")  
+                    include ./learn.pug
+    if user.coach            
+        .card
+            .card-header(id="coach")
+                h2.mb-0
+                button.btn.btn-block.btn-outline-secondary(
+                    type="button"
+                    data-toggle="collapse" 
+                    data-target="#coachContent"
+                    aria-expanded="true" 
+                    aria-controls="coachContent" 
+                    ) Coach, view or create your own courses
+            div.collapse.show(
+                id="coachContent" 
+                aria-labelledby="coach" 
+                data-parent="#courses"
+            )
+                .card-body.d-flex(
+                    style="flex-wrap: wrap;") 
+                    include ./coach.pug
+
+
