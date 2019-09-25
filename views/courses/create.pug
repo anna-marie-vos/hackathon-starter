@@ -1,0 +1,54 @@
+extends ../layout
+
+block content
+  form(method='POST')
+    input(type='hidden', name='_csrf', value=_csrf)
+    if course
+        input(type='hidden', name='id', value=course.id)
+    .row
+        input.text-center.input-lg.form-control(
+            type='text', 
+            name='title', 
+            id='title', 
+            placeholder='Course Title', 
+            style="font-weight: bold; font-size: 28px;"
+            autofocus, 
+            value=course.title
+            autocomplete='title'
+            required
+            )
+    .row
+        input.text-center.input-lg.form-control(
+            type='text', 
+            name='description', 
+            id='description', 
+            placeholder='Course Description', 
+            style="font-size: 16px;" 
+            value=course.description
+            required
+            )
+    .row
+        textarea.text-center.form-control( 
+            rows="3"
+            name='learningOutcomes', 
+            id='learningOutcomes', 
+            placeholder='Learning Outcomes', 
+            style="min-width: 100%;"
+            required
+        )=course.learningOutcomes
+    .row.mt-3
+        select.selectpicker(
+            data-width="100%"
+            multiple,
+            title="Add Learners"
+            name="attendees"
+            data-selected-text-format="count"
+            )
+            each user in users
+                option(selected=user.assigned) #{user.email} 
+
+    .pt-3
+    if course._id
+        button.btn.btn-block.btn-outline-secondary(type="submit") Update
+    else  
+        button.btn.btn-block.btn-outline-secondary(type="submit") Create

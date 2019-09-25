@@ -1,0 +1,11 @@
+extends ../layout
+
+block content
+    .card.mr-1(style="width: 50rem;")
+        .card-body.d-flex.flex-column
+            h2.card-title #{course.title}
+            h6.card-subtitle.mb-2.text-muted Description
+            p.flex-grow-1.card-text #{course.description}
+            h6.card-subtitle.mb-2.text-muted Learning Outcomes
+            p.flex-grow-1.card-text #{course.learningOutcomes}
+        

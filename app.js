@@ -34,6 +34,7 @@ const userController = require('./controllers/user');
 const apiController = require('./controllers/api');
 const contactController = require('./controllers/contact');
 const membersController = require('./controllers/members');
+const coursesController = require('./controllers/courses');
 
 /**
  * API keys and Passport configuration.
@@ -147,6 +148,13 @@ app.post('/account/delete', passportConfig.isAuthenticated, userController.postD
 app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
 app.get('/members/:id?', passportConfig.isAuthenticated, membersController.index);
 
+/*
+  Courses app Routes
+*/
+app.get('/courses', passportConfig.isAuthenticated, coursesController.index);
+app.get('/courses/view/:id', passportConfig.isAuthenticated, coursesController.viewCourse);
+app.get('/courses/create/:id?', passportConfig.isAuthenticated, coursesController.create);
+app.post('/courses/create/:id?', passportConfig.isAuthenticated, coursesController.createCourse);
 /**
  * API examples routes.
  */
